@@ -4056,7 +4056,7 @@ cv.class <- function(x,
   cv.errse <- cv.fit$cvsd
   enlambda <- cv.fit$lambda
   
-  if (all(is.na(cv.errmu)) || is.nan(cv.errmu) || is.empty(cv.errmu)) {
+  if (all(is.na(cv.errmu)) || any(is.nan(cv.errmu)) || is.empty(cv.errmu)) {
     index.min <- NA
     index.1se <- NA
   } else {
@@ -4240,23 +4240,32 @@ mse <- function (observed, predicted) {
 
 is.empty <- function(x) {
   
-  if (is.vector(x)) {
-    y <- which(is.na(x))
-    if (length(y) != 0) {
-      return(FALSE)
+  if (is.null(x)) {
+    return(TRUE)
+  } else if (is.vector(x, mode="any")) {
+    na <- is.na(x)
+    if (length(which(na)) != 0) {
+      return(FALSE)  #NA is a non-empty value
     } else {
-      if((length(x) == 0) || (x == "")) {
-        return(TRUE)
+      x <- x[!na]
+      if (is.character(x)) {
+        if (length(x) == 0) {
+          return(TRUE)
+        } else if (length(x) > 0) {
+          return( all(sapply(as.list(x), function(x) {x == ""})) )
+        }
       } else {
-        return(FALSE)
-      }
+        if (length(x) == 0) {
+          return(TRUE)
+        } else {
+          return(FALSE)
+        }
+      }      
     }
   } else if (is.matrix(x) || is.data.frame(x)) {
     return( ((nrow(x) == 0) || (ncol(x) == 0)) )
-  } else {
-    return( ((length(x) == 0) || (x == "")) )
-  }
-  
+  } 
+
 }
 #===============================================================================================================================#
 
@@ -4562,8 +4571,7 @@ perfo.metrics <- function(x.obs,
                           x.pred,
                           a=1) {
   
-  if (!is.na(x.obs) && !is.na(x.obs) && !is.empty(x.obs) &&
-      !is.na(x.pred) && !is.na(x.pred) && !is.empty(x.pred)) {
+  if (!any(is.na(x.obs)) && !any(is.na(x.obs)) && !is.empty(x.obs) && !any(is.na(x.pred)) && !any(is.na(x.pred)) && !is.empty(x.pred)) {
     pred <- prediction(predictions=x.pred, labels=x.obs)
     perf <- performance(prediction.obj=pred, measure="auc")
     auc <- perf@"y.values"[[1]][1]
