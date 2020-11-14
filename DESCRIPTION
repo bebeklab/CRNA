@@ -1,0 +1,25 @@
+Package: CRNA
+Type: Package
+Title: Causal Regulatory Network Analysis
+Version: 1.0.0
+Date: 2020-11-14
+Authors@R: c(person("Jean-Eudes", "Dazard",
+                    role = c("aut", "cre"),
+                    email = "jean-eudes.dazard@case.edu"),
+             person("Dongze", "He",
+                    role = "ctb",
+                    email = "dhe17@umd.edu"),
+             person("Gurkan", "Bebek",
+                    role = "ctb",
+	               email = "gurkan.bebek@case.edu"))
+Author: Jean-Eudes Dazard [aut, cre], Dongze He [ctb], Gurkan Bebek [ctb]
+Maintainer: Jean-Eudes Dazard <jean-eudes.dazard@case.edu>
+Description: Performs an integrative Causal Regulatory Network Analysis (CRNA) of system level measurements.
+Depends: R (>= 3.5.0)
+Imports: parallel, limma, igraph, glmnet, Matrix, abind
+NeedsCompilation: yes
+URL: https://github.com/jedazard/CRNA
+Repository: CRAN, GitHub, Inc.
+Date/Publication: 2020-08-07
+License: GPL (>= 3) | file LICENSE
+Archs: i386, x64

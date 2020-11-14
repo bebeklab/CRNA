@@ -1,0 +1,17 @@
+# Refer to all C routines by their name prefixed by C_
+useDynLib("CRNA", .registration=TRUE, .fixes = "C_")
+
+import("parallel")
+
+import("limma")
+import("igraph")
+import("glmnet")
+import("Matrix")
+import("abind")
+
+export("crna.news",
+       "crna.sl",
+       "crna.as",
+       "crna.tuning.sl",
+       "crna.tuning.as")
+
