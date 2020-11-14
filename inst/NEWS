@@ -1,0 +1,11 @@
+Package: CRNA
+
+---------------------------------------------------------------------------------
+Date   : 2020-11-14
+o RELEASE 1.0.0
+- Initial release to GitHub.
+PACKAGE INSTALLATION
+- Built and tested under R version 4.0.3 (2020-10-10).
+- Migrated update to GitHub and tested by Travis CI.
+---------------------------------------------------------------------------------
+

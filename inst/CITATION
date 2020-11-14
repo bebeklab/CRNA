@@ -1,0 +1,22 @@
+citHeader("To cite superpc in publications use:")
+
+titl <- paste(meta$Package, ":", meta$Title, sep=" ")
+year <- sub(".*(2[[:digit:]]{3})-.*", "\\1", meta$Date)
+vers <- paste("R package version", meta$Version)
+
+citEntry(entry       = "Article",
+         title       = "Integrative Network Analysis Discovers Causal
+Regulatory Network of System Level
+Measurements",
+         author      = personList(person(family="He", given="D."),
+                                  person(family="Dazard", given="J-E."),
+                                  person(family="Durmaz", given="A."),
+                                  person(family="Bebek", given="G.")), 	
+         journal     = "Nature Methods",
+         year        = "2020",
+         volume      = "-",
+         number      = "-",
+         pages       = "--",
+         textVersion = "He D., Jean-Eudes Dazard J-E., Durmaz A., and Bebek G. (2020).
+                        Integrative Network Analysis Discovers Causal Regulatory Network of System Level Measurements.
+                        submitted. 2020;-(-):--.")
