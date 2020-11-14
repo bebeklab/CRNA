@@ -1,0 +1,5 @@
+IER3	Activates	TP53
+MMP3	Activates	HBEGF
+PLG	Activates	MMP3
+SERPINE1	Inhibits	PLG
+TP53	Activates	SERPINE1

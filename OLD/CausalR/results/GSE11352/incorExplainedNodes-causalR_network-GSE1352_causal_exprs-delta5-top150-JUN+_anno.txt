@@ -1,0 +1,8 @@
+NodeID	Regulation
+JAK2	1
+MGP	1
+ABCA1	-1
+ACKR3	-1
+NEDD9	-1
+TFPI	-1
+TNS3	-1

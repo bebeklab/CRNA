@@ -1,0 +1,2 @@
+NodeID	Regulation
+HBEGF	1

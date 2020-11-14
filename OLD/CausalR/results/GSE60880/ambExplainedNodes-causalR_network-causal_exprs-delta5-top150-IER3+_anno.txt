@@ -1,0 +1,6 @@
+NodeID	Regulation
+CCL2	1
+DUSP6	1
+FOSL1	1
+NR4A1	1
+SIK1	1

@@ -1,0 +1,13 @@
+ADAM17	Activates	ERBB4
+AKT1	Activates	PRKACA
+CSNK2A1	Activates	AKT1
+CSNK2A1	Activates	SRF
+CSNK2A1	Activates	TP53
+CSNK2A1	Inhibits	SP1
+MC4R	Activates	NPY
+NPY	Activates	NPY1R
+PRKACA	Activates	MC4R
+SP1	Activates	ADAM17
+SRF	Activates	FHL2
+SRF	Activates	GATA4
+TP53	Activates	PMAIP1

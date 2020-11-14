@@ -1,0 +1,10 @@
+AR	Activates	MME
+BCL2	Inhibits	BIK
+MAPK3	Inhibits	JAK2
+NR3C1	Activates	AR
+NR3C1	Activates	MAPK3
+NR4A1	Activates	NR3C1
+NR4A1	Inhibits	BCL2
+NR4A1	Inhibits	TP53
+TP53	Inhibits	AR
+TP53	Inhibits	MAPK3
