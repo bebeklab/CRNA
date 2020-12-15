@@ -92,7 +92,7 @@ install.packages("CRNA")
 ```{r}
 install.packages("devtools")
 library("devtools")
-devtools::install_github("jedazard/CRNA")
+devtools::install_github("bebeklab/CRNA")
 ```
 
 =========
