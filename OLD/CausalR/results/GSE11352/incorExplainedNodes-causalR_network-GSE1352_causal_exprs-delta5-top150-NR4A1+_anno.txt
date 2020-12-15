@@ -1,4 +1,0 @@
-NodeID	Regulation
-JAK2	1
-BIK	-1
-MME	-1

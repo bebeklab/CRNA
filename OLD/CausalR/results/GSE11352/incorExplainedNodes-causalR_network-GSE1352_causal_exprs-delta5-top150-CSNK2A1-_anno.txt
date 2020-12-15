@@ -1,6 +1,0 @@
-NodeID	Regulation
-FHL2	1
-GATA4	1
-NPY1R	1
-PMAIP1	1
-ERBB4	-1
