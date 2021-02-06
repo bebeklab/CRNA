@@ -4732,7 +4732,7 @@ causal <- function (graph,
 
   # Aggregating bootstrap replications results
   nodes.matrix <- matrix(data=NA, nrow=p.adj, ncol=R, dimnames=list(nodes.names, 1:R))
-  edges.matrix <- matrix(data=NA, nrow=0, ncol=3, dimnames=list(NULL,c("from", "type", "to")))
+  edges.matrix <- matrix(data=NA, nrow=0, ncol=3, dimnames=list(NULL,c("from", "sign", "to")))
   for (r in 1:R) {
     w <- pmatch(x=causal.list$nodes[[r]], table=nodes.names)
     if (!is.null(w)) {
@@ -4741,7 +4741,9 @@ causal <- function (graph,
     }
   }
   edges.matrix <- unique(edges.matrix)
-  
+  edges.matrix <- edges.matrix[,c("from", "to", "sign")]
+  levels(edges.matrix) <- c(1,-1)
+
   # Filtering
   nodes.freq <- apply(nodes.matrix, 1, function(x){R - sum(is.na(x))})  
   causal.nodes <- names(which(nodes.freq >= FR*R))
@@ -4916,7 +4918,7 @@ causal.boot <- function (graph,
                                                  writeNetworkFiles="all",
                                                  outputDir=file.path(HOME.path, RESULT.path, paste0("CausalR", r), fsep=.Platform$file.sep))))
       
-      # Combining all CausalR result to a single file
+      # Combining all CausalR results into a single file
       obj <- as.numeric(system(paste0("ls ", eval(file.path(HOME.path, RESULT.path, paste0("CausalR", r), fsep=.Platform$file.sep)), " | grep ^cor* | wc -l"), intern = TRUE))
       if (obj != 0) {
         # Recording result
@@ -4953,7 +4955,7 @@ causal.boot <- function (graph,
           }
         })
       } else {
-        # If returned CausalR files are inexistant, collect all file names and grep the gene names from file names
+        # If returned CausalR files are nonexistent, collect all file names and grep the gene names from file names
         nodes.output[[r]] <- NA
         edges.output[[r]] <- matrix(data=NA, nrow=0, ncol=3, dimnames=list(NULL,c("from", "type", "to")))
       }
@@ -5035,7 +5037,7 @@ causal.boot <- function (graph,
                                                writeNetworkFiles="all",
                                                outputDir=file.path(HOME.path, RESULT.path, paste0("CausalR", pid), fsep=.Platform$file.sep))))
     
-    # Combining all CausalR result to a single file
+    # Combining all CausalR results into a single file
     obj <- as.numeric(system(paste0("ls ", eval(file.path(HOME.path, RESULT.path, paste0("CausalR", pid), fsep=.Platform$file.sep)), " | grep ^cor* | wc -l"), intern = TRUE))
     if (obj != 0) {
       # Recording result
@@ -5070,7 +5072,7 @@ causal.boot <- function (graph,
         }
       })
     } else {
-      # If returned CausalR files are inexistant, collect all file names and grep the gene names from file names
+      # If returned CausalR files are nonexistent, collect all file names and grep the gene names from file names
       nodes.output <- NA
       edges.output <- matrix(data=NA, nrow=0, ncol=3, dimnames=list(NULL,c("from", "type", "to")))
     }
@@ -5378,7 +5380,8 @@ ipa.boot <- function(graph,
       }
       
       # Recording result
-      tmp <- IPAresult[which(IPAresult$`p-value` <= fdr),]$node
+      tmp <- IPAresult[which(IPAresult$`p-value` <= 0.05),]$node
+#      tmp <- IPAresult[which(IPAresult$`p-value` <= fdr),]$node
       if (is.empty(tmp)) {
         nodes.output[[r]] <- NA
       } else {
@@ -5441,7 +5444,8 @@ ipa.boot <- function(graph,
     }
     
     # Recording result
-    tmp <- IPAresult[which(IPAresult$`p-value` <= fdr),]$node
+    tmp <- IPAresult[which(IPAresult$`p-value` <= 0.05),]$node
+#    tmp <- IPAresult[which(IPAresult$`p-value` <= fdr),]$node
     if (is.empty(tmp)) {
       nodes.output <- NA
     } else {
