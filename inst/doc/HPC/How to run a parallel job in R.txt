@@ -1,0 +1,64 @@
+# In a BASH shell:
+
+# Change directory to the submit directory: e.g. 
+cd /home/userID/.../
+
+
+
+# In a SLURM script
+(example for a request of 1 compute node with 24 cpus and 90Gb RAM):
+
+#!/bin/bash
+#SBATCH --job-name="Ex_comp_24cpus_90Gb"
+#SBATCH --time=24:00:00
+#SBATCH -N 1
+#SBATCH -n 24
+#SBATCH -C dodeca96gb
+#SBATCH --exclusive
+#SBATCH --mem=90gb
+#SBATCH --output=/home/userID/.../<log_filename>.log
+
+  # Load modules
+module load gcc/6.3.0
+module load R-ext-4.0.2/4.0.2
+
+echo "-------------------------------"
+echo "My job will use the following nodes:"
+echo $SLURM_JOB_NODELIST
+echo "-------------------------------"
+echo "My job will use the following number of tasks:"
+echo $SLURM_NTASKS
+echo "-------------------------------"
+echo "Temporarily Directory (PFSDIR):"
+echo $PFSDIR
+echo "-------------------------------"
+
+  # Copy all files needed for the job from the submit directory ($SLURM_SUBMIT_DIR), 
+  # i.e. the directory where the job is submitted, 
+  # to the temporary scratch directory ($PFSPDIR) associated with the job.
+  # (If needed input files, workspaces, etc... are in another location, 
+  # then copy from that location instead)
+
+cp -r * $PFSDIR
+
+  # cd to the directory where the job was submitted
+
+cd $PFSDIR
+
+  # Run R
+
+Rscript /home/userID/.../<R_script_filename>.r "SOCKET" 
+
+  # Copy results from tmp to submit directory
+
+cp -ru * $SLURM_SUBMIT_DIR
+
+  # Delete my scratch job files
+
+rm -Rf `ls -la "$PFSDIR"/* | grep 'userID' | awk ' { print $9 } '`
+
+
+
+# In BASH shell:
+
+sbatch /home/userID/.../SLURM/<slurm_script_filename>.slurm
