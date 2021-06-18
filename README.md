@@ -5,7 +5,7 @@ Causal Regulatory Network Analysis (CRNA)
 ===============
 ### Description
 
-Performs an integrative Causal Regulatory Network Analysis (CRNA) of system level measurements (He at al. 2020).
+Performs an integrative Causal Regulatory Network Analysis (CRNA) of system level measurements (He at al. 2021).
 
 
 ===============
@@ -66,7 +66,7 @@ CRAN downloads in the last week:
 ================
 ### Requirements
 
-CRNA (>= 1.0.0) requires R-3.5.0 (2018-04-23). It was built and tested under R version 4.0.3 (2020-10-10) and Travis CI. 
+CRNA (>= 1.0.0) requires R-3.5.0 (2018-04-23). It was built and tested under R version 4.1.0 (2021-05-18) and Travis CI. 
 
 Installation has been tested on Windows, Linux, OSX and Solaris platforms. 
 
@@ -144,4 +144,4 @@ Funding/Provision/Help:
 
    + He D. Dazard J-E., Durmaz A., and Bebek G. 
    *Integrative Network Analysis Discovers Causal Regulatory Network of System Level Measurements*. 
-   [submitted (2020), -(-):--]().
+   [submitted (2021), -(-):--]().
