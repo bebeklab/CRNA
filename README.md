@@ -129,6 +129,7 @@ etc...
 Authors: 
    + Jean-Eudes Dazard, Ph.D. <jean-eudes.dazard@case.edu>
    + Dongze He, Ph.D. <dhe17@umd.edu>
+   + Durmaz Arda <axd497@case.edu>
    + Gurkan Bebek, Ph.D. <gurkan.bebek@case.edu>
 
 Maintainers: 
