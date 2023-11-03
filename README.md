@@ -32,6 +32,8 @@ we improve on the inconsistencies in activity states that are often observed in 
 scores/states for Genes/Proteins and paths for an individual sample or multiple measurements of the same phenotype, which can also be 
 used to assess the quality of samples, providing flexibility for downstream analyses.
 
+Note: Small sample size might lead to problems due to the current bootstrapping structure.
+
 * Availability: [GitHub (main)](https://github.com/bebeklab/CRNA) or [GitHub (mirror site)](https://github.com/jedazard/CRNA).
 * Supplementary information: Supplementary data and methods are available on this site.
 
@@ -145,6 +147,6 @@ Funding/Provision/Help:
 ==============
 ### References
 
-   + He D. Dazard J-E., Durmaz A., and Bebek G. 
+   + He D. Dazard J-E., Eris F., Durmaz A., and Bebek G. 
    *Integrative Network Analysis Discovers Causal Regulatory Network of System Level Measurements*. 
-   [submitted (2021), -(-):--]().
+   [submitted (2023), -(-):--]().
