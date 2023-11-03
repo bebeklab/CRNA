@@ -1,17 +1,29 @@
-# Refer to all C routines by their name prefixed by C_
-useDynLib("CRNA", .registration=TRUE, .fixes = "C_")
-
-import("parallel")
-
-import("limma")
-import("igraph")
-import("glmnet")
-import("Matrix")
-import("abind")
-
-export("crna.news",
-       "crna.sl",
-       "crna.as",
-       "crna.tuning.sl",
-       "crna.tuning.as")
-
+useDynLib(CRNA, .registration=TRUE)
+export(crna.as)
+export(crna.sl)
+export(crna.tuning.as)
+export(crna.tuning.sl)
+import(stats)
+import(utils)
+import(parallel)
+import(magrittr)
+import(limma)
+import(Matrix)
+importFrom(igraph, simplify)
+importFrom(igraph, delete_vertices)
+importFrom(igraph, E)
+importFrom(igraph, V)
+importFrom(igraph, graph_from_data_frame)
+importFrom(igraph, induced_subgraph)
+importFrom(igraph, induced.subgraph)
+importFrom(igraph, vcount)
+importFrom(igraph, neighbors)
+importFrom(igraph, get.edge.ids)
+importFrom(igraph, subgraph.edges)
+importFrom(igraph, degree)
+importFrom(igraph, "E<-")
+importFrom(igraph, "V<-")
+importFrom(ROCR, prediction)
+importFrom(ROCR, performance)
+importFrom(Rcpp, evalCpp)
+exportPattern("^[[:alpha:]]+")

@@ -1,0 +1,128 @@
+---
+title: "build_knowledgebase"
+author: "Dongze He"
+date: "5/30/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# load packages
+
+```{r}
+suppressPackageStartupMessages({
+  library(igraph)
+  library(OmnipathR)
+  library(dplyr)
+  library(biomaRt)
+  library(STRINGdb)
+  library(ensembldb)
+  library(EnsDb.Hsapiens.v86)
+})
+edb <- EnsDb.Hsapiens.v86
+```
+
+# load omnipath dataset
+
+As these two databases use different annotations, I get the Entrez protein ID from `ensembldb`, if there is no corresponding entry, we have `NA`
+
+In this step, we need to filter interactions that have no direction, or neither simulation nor inhibition
+
+Some interactions are not included in stringDB, so we *make* the combined score according to #references, #sourcese and curation effort.
+
+```{r}
+# get interactions from all databases
+omni = import_omnipath_interactions(
+    organism = 9606,
+    datasets = c('omnipath', 'pathwayextra', 'kinaseextra', 'ligrecextra', 'dorothea','tf_target', 'mirnatarget', 'tf_mirna', 'lncrna_mrna')
+)
+
+# This is the default from the database location https://omnipathdb.org/interactions
+omni_human = import_omnipath_interactions(
+    organism = 9606,
+)
+
+table((omni$consensus_stimulation + omni$consensus_inhibition))
+
+
+# keep only interactions with clear direction
+omni = omni[(omni$consensus_stimulation + omni$consensus_inhibition) == 1,]
+
+# some entries is out of stringdb, so we make the score 
+table(omni$n_resources)
+table(omni$curation_effort)
+  
+#june 2021
+#omni$combined_score = (omni$n_references/max(omni$n_references) + omni$n_resources/max(omni$n_resources) + omni$curation_effort/max(omni$curation_effort))/3
+
+#Oct 2021 (stopped working )
+# The combined score is the two values given by the database ... (log score to only penalize low # of citations. But anything high should be reliable)
+omni$combined_score = ( log(1+omni$n_resources)/log(max(omni$n_resources)) + log(1+omni$curation_effort)/log(max(omni$curation_effort)))/2
+
+# 0.15 is the minimum score in stirngDB
+omni$combined_score[omni$combined_score < 0.15] = 0.15
+
+# get ensembl ID from ensembl db
+uniprot_to_ensembl = proteins(EnsDb.Hsapiens.v86, filter = UniprotFilter(c(omni$source, omni$target)))
+rownames(uniprot_to_ensembl) = uniprot_to_ensembl$uniprot_id
+omni$source_ensembl = uniprot_to_ensembl[match(omni$source, uniprot_to_ensembl$uniprot_id),]$protein_id 
+omni$target_ensembl = uniprot_to_ensembl[match(omni$target, uniprot_to_ensembl$uniprot_id),]$protein_id 
+
+# as we need to match the two datasets using two columns, source and target, so we combined the to into one
+omni$st = paste0(omni$source_ensembl, omni$target_ensembl)
+
+```
+
+# STRINGdb
+
+we read in STRINGdb and process the ID. As STRINGdb is undirected, we swap the from and two and rbind the interactions with its swapped one.
+
+```{r}
+# instantiate stringdb
+string_db <- STRINGdb$new( version="11.5", species=9606,
+ score_threshold=0, input_directory="")
+
+# get interactions
+string_db_interactions = string_db$get_interactions(string_db$get_aliases()$STRING_id)
+
+# remove the prefix in the entrez ID
+string_db_interactions$from <- sub("9606.", "", string_db_interactions$from)
+string_db_interactions$to <-sub("9606.", "", string_db_interactions$to)
+
+# swap from and to, then rbind them
+string_db_interactions_reverse = string_db_interactions[, c(2,1,3)]
+colnames(string_db_interactions_reverse) = colnames(string_db_interactions)
+string_db_interactions = rbind(string_db_interactions, string_db_interactions_reverse)
+
+# match omnipath using source and target ID (the combined one)
+string_db_interactions$st = paste0(string_db_interactions$from, string_db_interactions$to)
+string_db_interactions = string_db_interactions[which(string_db_interactions$st %in% omni$st),]
+rm(string_db, string_db_interactions_reverse)
+
+# scale combined score, and aggregate the scores if the source and target names are same
+string_db_interactions$combined_score = string_db_interactions$combined_score/1000
+string_db_interactions = aggregate(combined_score ~ from + to, string_db_interactions, mean)
+
+# set rownames for the further steps
+rownames(string_db_interactions) = paste0(string_db_interactions$from, string_db_interactions$to)
+```
+
+# Combine two datasets
+
+```{r}
+# using source and target IDs, we find the matched rows and append the combined score
+omni$combined_score[omni$st %in% rownames(string_db_interactions)] = string_db_interactions[omni$st[omni$st %in% rownames(string_db_interactions)],]$combined_score
+
+# we define sign: 1 is stimulated, -1 is inhibition
+omni$sign = omni$consensus_stimulation - omni$consensus_inhibition
+```
+
+# Take one interested columns as our PPI
+
+```{r}
+PPI = omni[, c("source_genesymbol", "target_genesymbol", "sign", "combined_score")]
+colnames(PPI) <- c("source_name", "target_name", "sign", "weight")
+saveRDS(PPI, "PPI_graph.rds")
+```
