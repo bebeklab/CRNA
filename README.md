@@ -32,11 +32,16 @@ we improve on the inconsistencies in activity states that are often observed in 
 scores/states for Genes/Proteins and paths for an individual sample or multiple measurements of the same phenotype, which can also be 
 used to assess the quality of samples, providing flexibility for downstream analyses.
 
-Note: Small sample size might lead to problems due to the current bootstrapping structure.
+============
+### Availability
 
-* Availability: [GitHub (main)](https://github.com/bebeklab/CRNA) or [GitHub (mirror site)](https://github.com/jedazard/CRNA).
-* Supplementary information: Supplementary data and methods are available on this site.
+* [GitHub (main)](https://github.com/bebeklab/CRNA) or [GitHub (mirror site)](https://github.com/jedazard/CRNA).
+* Supplementary information: Supplementary data and methods are available on this site in the data folder.
 
+============
+### Notes
+
+Experimental designs with small sample size per group might lead to problems due to the current implementation of the bootstrapping resampling. We recommend using at least 5 samples per group. This limitation will be addressed in a future release of the software soon.
 
 ============
 ### Branches
@@ -50,10 +55,8 @@ CRNA is at this time open source / free software, licensed under the GNU General
 sponsored by the [Free Software Foundation](https://www.fsf.org/). To view a copy of this license, visit 
 [GNU Free Documentation License](https://www.gnu.org/licenses/gpl-3.0.html).
 
-
 =============
 ### Downloads
-
 
 
 ================
