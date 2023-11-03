@@ -6,7 +6,7 @@ o RELEASE 1.0.0
 - Initial release to GitHub.
 - Submitted to Bioconductor.
 PACKAGE INSTALLATION
-- Built and tested under R version 4.3.1 (2020-10-10).
+- Built and tested under R version 4.3.1 (2023-06-16).
 - Migrated update to GitHub and tested by GitHub Actions CI.
 ---------------------------------------------------------------------------------
 
