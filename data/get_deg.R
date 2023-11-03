@@ -1,6 +1,7 @@
 library(edgeR)
 library(limma)
 
+## GSE11352
 gse11352 <- readRDS('~/Research/crna/GSE11352.RDS')
 ppi<-readRDS('~/Research/crna/PPI_graph.RDS')
 
@@ -47,7 +48,7 @@ res_ft <- res_ft[res_ft$id %in% union(ppi$source_name, ppi$target_name),]
 write.csv(res_ft, file='~/Research/crna/DEG_GSE11352.csv', col.names = TRUE, row.names = FALSE,
           append = FALSE, quote=FALSE)
 
-## GSE60990
+## GSE60880
 gse.ft <- readRDS('~/Research/crna/GSE60880.RDS')
 ppi<-readRDS('~/Research/crna/PPI_graph.RDS')
 
