@@ -5,7 +5,7 @@ Causal Regulatory Network Analysis (CRNA)
 ===============
 ### Description
 
-Performs an integrative Causal Regulatory Network Analysis (CRNA) of system level measurements (He at al. 2021).
+Performs an integrative Causal Regulatory Network Analysis (CRNA) of system level measurements (He at al. 2024).
 
 
 ===============
@@ -147,6 +147,6 @@ Funding/Provision/Help:
 ==============
 ### References
 
-   + He D. Dazard J-E., Eris F., Durmaz A., and Bebek G. 
+   + He D., Dazard J-E., Eris F., Durmaz A., and Bebek G. 
    *Integrative Network Analysis Discovers Causal Regulatory Network of System Level Measurements*. 
    [submitted (2023), -(-):--]().
