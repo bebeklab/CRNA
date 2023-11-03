@@ -2,13 +2,13 @@
 Causal Regulatory Network Analysis (CRNA)
 
 
-===============
+==================
 ### Description
 
 Performs an integrative Causal Regulatory Network Analysis (CRNA) of system level measurements (He at al. 2024).
 
 
-===============
+==================
 ### Details
 
 Causal Regulatory Network Analysis (CRNA) explains observed gene expression changes by a causal pattern under a given experiment. 
@@ -32,34 +32,34 @@ we improve on the inconsistencies in activity states that are often observed in 
 scores/states for Genes/Proteins and paths for an individual sample or multiple measurements of the same phenotype, which can also be 
 used to assess the quality of samples, providing flexibility for downstream analyses.
 
-============
+==================
 ### Availability
 
 * [GitHub (main)](https://github.com/bebeklab/CRNA) or [GitHub (mirror site)](https://github.com/jedazard/CRNA).
 * Supplementary information: Supplementary data and methods are available on this site in the data folder.
 
-============
+==================
 ### Notes
 
 Experimental designs with small sample size per group might lead to problems due to the current implementation of the bootstrapping resampling. We recommend using at least 5 samples per group. This limitation will be addressed in a future release of the software soon.
 
-============
+==================
 ### Branches
 
 This branch (master) is the  default one, that hosts the current development release (version 1.0.0).
 
-===========
+==================
 ### License
 
 CRNA is at this time open source / free software, licensed under the GNU General Public License version 3 (GPLv3), 
 sponsored by the [Free Software Foundation](https://www.fsf.org/). To view a copy of this license, visit 
 [GNU Free Documentation License](https://www.gnu.org/licenses/gpl-3.0.html).
 
-=============
+==================
 ### Downloads
 
 
-================
+==================
 ### Requirements
 
 CRNA (>= 1.0.0) requires R-3.5.0 (2018-04-23). It was built and tested under R version 4.3.1 (2023-06-16) and GitHub Actions CI. 
@@ -70,7 +70,7 @@ See GitHub Actions CI build result:
 [![Build Status](https://travis-ci.org/jedazard/CRNA.png?branch=master)](https://travis-ci.org/jedazard/CRNA)
 
 
-================
+==================
 ### Installation
 
 * To install the stable version of `CRNA`, simply download and install the current version (1.0.0) from the [CRAN](https://CRAN.R-project.org/package=CRNA) 
@@ -88,7 +88,7 @@ library("devtools")
 devtools::install_github("bebeklab/CRNA")
 ```
 
-=========
+==================
 ### Usage
 
 * To load the CRNA library in an R session and start using it:
@@ -112,7 +112,7 @@ citation("CRNA")
 etc...
 
 
-==================
+===================
 ### Website - Wiki
 
 
@@ -135,7 +135,7 @@ Funding/Provision/Help:
    + This project was partially funded by the National Institutes of Health NIH - National Cancer Institute (P30-CA043703).
 
 
-==============
+===================
 ### References
 
    + He D., Dazard J-E., Eris F., Durmaz A., and Bebek G. 
