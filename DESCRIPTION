@@ -29,6 +29,6 @@ Imports: Rcpp (>= 1.0.10),
 			utils (>= 4.2.1)
 LinkingTo: Rcpp, BH
 NeedsCompilation: yes
-#URL: https://github.com/bebeklab/CRNA, https://github.com/jedazard/IRSF
+#URL: https://github.com/bebeklab/CRNA, https://github.com/jedazard/CRNA
 #Packaged: 2023-11-03; furkan
 RoxygenNote: 7.2.3
