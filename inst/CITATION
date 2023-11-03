@@ -12,11 +12,11 @@ Measurements",
                                   person(family="Dazard", given="J-E."),
                                   person(family="Durmaz", given="A."),
                                   person(family="Bebek", given="G.")), 	
-         journal     = "Nature Methods",
-         year        = "2020",
+         journal     = "Recomb 2024",
+         year        = "2024",
          volume      = "-",
          number      = "-",
          pages       = "--",
-         textVersion = "He D., Jean-Eudes Dazard J-E., Durmaz A., and Bebek G. (2020).
+         textVersion = "He D., Dazard J-E., Eris F., Durmaz A., and Bebek G. (2024).
                         Integrative Network Analysis Discovers Causal Regulatory Network of System Level Measurements.
-                        submitted. 2020;-(-):--.")
+                        submitted. 2024;-(-):--.")
