@@ -1,8 +1,11 @@
 useDynLib(CRNA, .registration=TRUE)
+
 export(crna.as)
 export(crna.sl)
 export(crna.tuning.as)
 export(crna.tuning.sl)
+export(CRNA.news())
+
 import(stats)
 import(utils)
 import(parallel)
@@ -23,7 +26,6 @@ importFrom(igraph, subgraph.edges)
 importFrom(igraph, degree)
 importFrom(igraph, "E<-")
 importFrom(igraph, "V<-")
-#importFrom(ROCR, prediction)
-#importFrom(ROCR, performance)
 importFrom(Rcpp, evalCpp)
+
 exportPattern("^[[:alpha:]]+")
