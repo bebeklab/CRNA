@@ -130,14 +130,14 @@ etc...
 
 Authors: 
    + Jean-Eudes Dazard, Ph.D. <jean-eudes.dazard@case.edu>
-   + Dongze He, Ph.D. <dhe17@umd.edu>
-   + Furkan Eris
-   + Durmaz Arda <axd497@case.edu>
+   + Dongze He, Ph.D., <dhe17@umd.edu>
+   + Furkan Eris, <furkan.eris@sabanciuniv.edu>
+   + Durmaz Arda, <axd497@case.edu>
    + Gurkan Bebek, Ph.D. <gurkan.bebek@case.edu>
 
 Maintainers: 
+   + Furkan Eris, <furkan.eris@sabanciuniv.edu>
    + Jean-Eudes Dazard, Ph.D. <jean-eudes.dazard@case.edu>
-   + Furkan Eris
 
 Funding/Provision/Help:   
    + This work made use of the High Performance Computing Resource in the Core Facility for Advanced Research Computing at Case Western Reserve University. 
