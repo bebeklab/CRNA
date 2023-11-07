@@ -4,7 +4,7 @@ Title: Causal Regulatory Network Analysis
 Version: 1.0.0
 Date: 2023-11-03
 Authors@R: c(person("Furkan", "Eris", email = "furkan.eris@sabanciuniv.edu", role = c("aut", "cre"), comment = c(ORCID = "0009-0007-4503-6073")), 
- 			 person("Jean-Eudes", "Dazard", email = "jean-eudes.dazard@case.edu", role = c("aut", "cre")),
+ 			 person("Jean-Eudes", "Dazard", email = "jean-eudes.dazard@case.edu", role = c("aut")),
 			 person("Dongze", "He", email = "dhe17@umd.edu", role = c("aut")),
 			 person("Arda", "Durmaz", email = "axd497@case.edu", role = c("aut")),
 			 person("Gurkan", "Bebek", email = "gurkan.bebek@case.edu", role = c("aut")))
