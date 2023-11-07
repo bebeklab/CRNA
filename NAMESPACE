@@ -4,6 +4,7 @@ export(crna.as)
 export(crna.sl)
 export(crna.tuning.as)
 export(crna.tuning.sl)
+export(CRNA.news)
 
 import(stats)
 import(utils)
