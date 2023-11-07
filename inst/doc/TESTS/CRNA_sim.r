@@ -89,7 +89,7 @@ DATA.path <- "DATA"
 #==========================================================================================#
 # Source some R procedure files
 #==========================================================================================#
-#source(file=file.path(HOME.path, CODE.path, "R/METHODS/CRNA/SIMS/CRNA_procedures.r", fsep=.Platform$file.sep))
+source(file=file.path("sim_functions.r", fsep=.Platform$file.sep))
 
 if (exists(".Random.seed")) rm(.Random.seed)
 RNGkind(kind="L'Ecuyer-CMRG")
