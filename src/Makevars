@@ -1,2 +1,0 @@
-CXX_STD = CXX11
-PKG_LIBS = -L/home/fxe35/R/x86_64-pc-linux-gnu-library/4.2/gmp/include -lgmpxx -lgmp
