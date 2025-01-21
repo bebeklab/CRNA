@@ -107,8 +107,7 @@ CRNA.news()
 citation("CRNA")
 ```
 
-etc...
-
+Refer to **quickstart** folder for an example on how to run CRNA on real RNA-seq data. 
 
 ===================
 ### Website - Wiki
