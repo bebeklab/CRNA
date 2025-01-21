@@ -10,3 +10,4 @@
 ^.*\.fsrc$
 ^.*\.o$
 ^.*\.so$
+^quickstart$
