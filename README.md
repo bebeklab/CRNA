@@ -73,20 +73,18 @@ See GitHub Actions CI build result:
 ==================
 ### Installation
 
-* To install the stable version of `CRNA`, simply download and install the current version (1.0.0) from the [CRAN](https://CRAN.R-project.org/package=CRNA) 
-repository:
+* In the current state of `CRNA`, please download the tarball including the source code (from the Releases section on the right side) and install the package using the following command:
 
 ```{r}
-install.packages("CRNA")
+R CMD INSTALL CRNA_1.0.0.tar.gz
 ```
 
-* Alternatively, you can install the most up-to-date development version (>= 1.0.0) of `CRNA` from the [GitHub](https://github.com/jedazard/CRNA) repository:
+* For recompilation and building after modifications to the source code, you can use the following command in the package directory to generate a tarball which can be installed again using the above command:
 
 ```{r}
-install.packages("devtools")
-library("devtools")
-devtools::install_github("bebeklab/CRNA")
+R CMD build .
 ```
+
 
 ==================
 ### Usage
