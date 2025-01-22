@@ -280,7 +280,7 @@ for (i in 1:length(combinations)) {
                         R=R,
                         fdr=fdr.set[f],
                         conf=conf,
-                        parallel=FALSE,
+                        parallel=TRUE,
                         seed=seed)
     save.image(file=file.path(HOME.path, RESULT.path, "CRNA_REAL_RNASEQ.RData", fsep = .Platform$file.sep))
     # Visualization of inferred network graph - Exporting lists to Cytoscape
