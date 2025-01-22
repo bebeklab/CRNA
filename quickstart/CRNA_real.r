@@ -1,5 +1,6 @@
 knitr::opts_chunk$set(echo = TRUE)
 library(CRNA)
+load("/home/fxe35/your_workspace.RData") # includes objects like ncbi_mapping
 .libPaths( c( "/home/fxe35/R/x86_64-pc-linux-gnu-library/4.2" , .libPaths() ) )
 .libPaths( c( .libPaths(), "/usr/local/easybuild_allnodes/software/R/4.2.1-foss-2021b/lib64/R/library", "/usr/local/easybuild_allnodes/software/R-bundle-Bioconductor/3.15-foss-2022a-R-4.2.2", "/usr/local/easybuild_allnodes/software/arrow-R/8.0.0-foss-2022a-R-4.2.2") )
 library(edgeR)
