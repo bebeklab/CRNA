@@ -64,11 +64,17 @@ sponsored by the [Free Software Foundation](https://www.fsf.org/). To view a cop
 
 CRNA (>= 1.0.0) requires R-3.5.0 (2018-04-23). It was built and tested under R version 4.3.1 (2023-06-16) and GitHub Actions CI. 
 
-Installation has been tested on Windows, Linux, OSX platforms. 
+The installation has been tested on Windows, Linux, OSX platforms. 
 
 See GitHub Actions CI build result:
 [![Build Status](https://travis-ci.org/jedazard/CRNA.png?branch=master)](https://travis-ci.org/jedazard/CRNA)
 
+
+To satisfiy required packages, before installation try the following:
+> setdiff(c("Rcpp", "parallel", "limma", "Matrix", "abind", "igraph", "glmnet", 
+          "testit", "magrittr", "stats", "utils", "BH"), rownames(installed.packages()))
+
+You will need to install these packages before CRNA.
 
 ==================
 ### Installation
