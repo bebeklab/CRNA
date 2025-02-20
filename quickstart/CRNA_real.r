@@ -15,6 +15,11 @@ CODE.path <- "CODES"
 RESULT.path <- "RESULTS/METHODS/CRNA/REAL"
 DATA.path <- "DATA"
 
+alpha.set <- seq(0.10, 0.90, by=0.10)
+size.set <- ceiling(seq(from=p/1000, to=p, by=5))
+quant.set <- rev(1-seq(from=0.001, to=0.1, by=0.0015))
+fdr.set <- 10^seq(-7, -5, by=1)
+seed <- 777
 
 library(GEOquery)
 library(DESeq2)
@@ -261,15 +266,28 @@ for (i in 1:length(combinations)) {
 
     TF<-as.factor(myFactor)
     TF
-
-
-    a <- 1
-    f <- 1
+    f <- 1   # fixed DE FDR = 1e-7
+    a <- 1   # fixed alpha = amin = 0.9
+    
+    crna.fit.as <- crna.tuning.as(graph=PPI.ig,
+                                  express=X,
+                                  factors=list(TF),
+                                  B=B,
+                                  alpha=0.9,
+                                  quant=quant.set,
+                                  fdr=fdr.set[f],
+                                  lag=8, span=0.40, degree=2, family="gaussian",
+                                  conf=conf,
+                                  parallel=TRUE,
+                                  seed=seed)
+    PE.mu.as <- crna.fit.as$PE.mu
+    PE.se.as <- crna.fit.as$PE.se
+    quant.cv.as <- crna.fit.as$quant.cv
     qmin <- quant.cv.as$qmin[a,f]
     qmin.id <- quant.cv.as$qmin.id[a,f]
     q1se <- quant.cv.as$q1se[a,f]
     q1se.id <- quant.cv.as$q1se.id[a,f]
-    seed <- 777
+    
     CRNA.output <- CRNA::crna.as(graph=PPI.ig,
                         express=X,
                         factors=list(TF),
@@ -282,6 +300,7 @@ for (i in 1:length(combinations)) {
                         conf=conf,
                         parallel=TRUE,
                         seed=seed)
+
     save.image(file=file.path(HOME.path, RESULT.path, "CRNA_REAL_RNASEQ.RData", fsep = .Platform$file.sep))
     # Visualization of inferred network graph - Exporting lists to Cytoscape
     cat("TEST3\n")
