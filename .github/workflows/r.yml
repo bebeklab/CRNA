@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        r-version: ['4.3.1']
+        r-version: ['4.4.1']
 
     steps:
       - uses: actions/checkout@v3
@@ -54,8 +54,7 @@ jobs:
       - name: Tag the repository
         id: tag
         run: |
-          # See https://docs.github.com/en/get-started/using-git/dealing-with-special-characters-in-branch-and-tag-names
-          TAG=v$(date -Iseconds | sed 's/[T:\+]/-/g')
+          TAG=CRNA_1.0.0  # Set the tag name explicitly
           echo "$TAG"
           echo "tag=$TAG" >> $GITHUB_OUTPUT
           git tag -a $TAG -m "Published version $TAG" ${GITHUB_SHA}

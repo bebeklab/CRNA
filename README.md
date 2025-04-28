@@ -64,29 +64,33 @@ sponsored by the [Free Software Foundation](https://www.fsf.org/). To view a cop
 
 CRNA (>= 1.0.0) requires R-3.5.0 (2018-04-23). It was built and tested under R version 4.3.1 (2023-06-16) and GitHub Actions CI. 
 
-Installation has been tested on Windows, Linux, OSX platforms. 
+The installation has been tested on Windows, Linux, OSX platforms. 
 
 See GitHub Actions CI build result:
 [![Build Status](https://travis-ci.org/jedazard/CRNA.png?branch=master)](https://travis-ci.org/jedazard/CRNA)
 
 
+To satisfiy required packages, before installation try the following:
+> setdiff(c("Rcpp", "parallel", "limma", "Matrix", "abind", "igraph", "glmnet", 
+          "testit", "magrittr", "stats", "utils", "BH"), rownames(installed.packages()))
+
+You will need to install these packages before CRNA.
+
 ==================
 ### Installation
 
-* To install the stable version of `CRNA`, simply download and install the current version (1.0.0) from the [CRAN](https://CRAN.R-project.org/package=CRNA) 
-repository:
+* In the current state of `CRNA`, please download the tarball including the source code (from the Releases section on the right side) and install the package using the following command:
 
 ```{r}
-install.packages("CRNA")
+R CMD INSTALL CRNA_1.0.0.tar.gz
 ```
 
-* Alternatively, you can install the most up-to-date development version (>= 1.0.0) of `CRNA` from the [GitHub](https://github.com/jedazard/CRNA) repository:
+* For recompilation and building after modifications to the source code, you can use the following command in the package directory to generate a tarball which can be installed again using the above command:
 
 ```{r}
-install.packages("devtools")
-library("devtools")
-devtools::install_github("bebeklab/CRNA")
+R CMD build .
 ```
+
 
 ==================
 ### Usage
@@ -109,8 +113,7 @@ CRNA.news()
 citation("CRNA")
 ```
 
-etc...
-
+Refer to **quickstart** folder for an example on how to run CRNA on real RNA-seq data. 
 
 ===================
 ### Website - Wiki

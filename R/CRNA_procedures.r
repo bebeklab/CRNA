@@ -662,7 +662,7 @@ crna.boot.sl <- function(graph,
       sig_nodes_names <- intersect(sig_nodes_names, igraph::V(RWR_graph)$name)
 
       for (i in 1:length(sig_nodes_names)) {
-        RWR_DFS_graph <- dfs(sig_nodes_names[i], RWR_graph, DEGs)
+        RWR_DFS_graph <- CRNA::dfs(sig_nodes_names[i], RWR_graph, DEGs)
         RWR_DFS_edges <- igraph::as_data_frame(RWR_DFS_graph)
 
         if (nrow(RWR_DFS_edges) > 0) {
@@ -819,7 +819,7 @@ crna.boot.sl <- function(graph,
     sig_nodes_names <- intersect(sig_nodes_names, igraph::V(RWR_graph)$name)
 
     for (i in 1:length(sig_nodes_names)) {
-      RWR_DFS_graph <- dfs(sig_nodes_names[i], RWR_graph, DEGs)
+      RWR_DFS_graph <- CRNA::dfs(sig_nodes_names[i], RWR_graph, DEGs)
       RWR_DFS_edges <- igraph::as_data_frame(RWR_DFS_graph)
 
       if (nrow(RWR_DFS_edges) > 0) {
@@ -1075,7 +1075,7 @@ crna.boot.as <- function(graph,
       sig_nodes_names <- intersect(sig_nodes_names, igraph::V(RWR_graph)$name)
 
       for (i in 1:length(sig_nodes_names)) {
-        RWR_DFS_graph <- dfs(sig_nodes_names[i], RWR_graph, DEGs)
+        RWR_DFS_graph <- CRNA::dfs(sig_nodes_names[i], RWR_graph, DEGs)
         RWR_DFS_edges <- igraph::as_data_frame(RWR_DFS_graph)
 
         if (nrow(RWR_DFS_edges) > 0) {
@@ -1232,7 +1232,7 @@ crna.boot.as <- function(graph,
     sig_nodes_names <- intersect(sig_nodes_names, igraph::V(RWR_graph)$name)
 
     for (i in 1:length(sig_nodes_names)) {
-      RWR_DFS_graph <- dfs(sig_nodes_names[i], RWR_graph, DEGs)
+      RWR_DFS_graph <- CRNA::dfs(sig_nodes_names[i], RWR_graph, DEGs)
       RWR_DFS_edges <- igraph::as_data_frame(RWR_DFS_graph)
 
       if (nrow(RWR_DFS_edges) > 0) {
